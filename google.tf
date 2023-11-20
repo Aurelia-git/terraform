@@ -9,7 +9,7 @@ variable "region" {
 }
 
 provider "google" {
-  credentials = file("account.json")
+  credentials = file("exalted-yeti-220219-5ddf3a8f6d2b.json")
   project     = var.project
   region      = var.region
 }

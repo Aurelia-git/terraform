@@ -25,12 +25,6 @@ resource "google_container_cluster" "cluster" {
   remove_default_node_pool = true
   initial_node_count       = 1
 
-  # Setting an empty username and password explicitly disables basic auth
-  master_auth {
-    username = ""
-    password = ""
-  }
-
   addons_config {
     network_policy_config {
       disabled = "false"
@@ -84,6 +78,7 @@ output "client_certificate" {
 
 output "client_key" {
   value = google_container_cluster.cluster.master_auth[0].client_key
+  sensitive = true
 }
 
 output "cluster_ca_certificate" {
